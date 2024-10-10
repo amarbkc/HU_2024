@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quasi-periodic tiling generator</title>
+    <meta name="robots" content="index, nofollow">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
+    <script src="script.js"></script>
+</head>
+
+<body onload="init()">
+    <!-- Full-screen canvas -->
+    <canvas id="mycanvas"></canvas>
+
+    <!-- Content to hide until button is clicked -->
+    <div id="content">
+        <p>Quasi-periodic tiling.</p>
+        <hr />
+        <p>
+            <b>Dimension : </b>
+            <button onclick="changedim(+document.getElementById('dim').value-1)">-</button>
+            <input id="dim" onchange="changedim(+this.value)" size="1">
+            <button onclick="changedim(+document.getElementById('dim').value+1)">+</button>
+            <br />
+            
+            <b>Normal vector to plane:</b>
+            <select id="values" onmouseup="changevalues()" onchange="changevalues()">
+                <option value="empty">manual</option>
+                <option value="random">random values</option>
+            </select>
+            <br />
+           <b>Point on plane:</b>
+            <select id="offset" onmouseup="changeoffset()" onchange="changeoffset()">
+                <option value="empty">manual</option>
+                <option value="random">random values</option>
+            </select>
+            
+            <br />
+            <table id="tab" border="1">
+                <tr id="eq">
+                    <th width="15%">Normal vector:</th>
+                </tr>
+                <tr id="pt">
+                    <th>Point on plane:</th>
+                </tr>
+            </table>
+            <p>
+                 Sample size=<input type="text" id="size" size="5" onchange="validatesize(this.value)" />
+                <button class = "but" onclick="readTableContent()">Recompute</button>
+            </p>
+        </p>
+      
+       
+    </div>
+
+    <button class="info-btn" onclick="showInfo()">i</button>
+
+    <div class="pdf-container" id="pdf-container">
+        <iframe class="pdf-frame" src="about.pdf" title="PDF File"></iframe>
+    </div>
+
+    <!-- Floating button to toggle visibility of content -->
+    <button class="floating-btn" onclick="toggleContent()">+</button>
+
+    
+</body>
+
+</html>
